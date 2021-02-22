@@ -9,11 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.geometry.Insets;
 import javafx.stage.Stage;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.BackgroundFill;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.control.*; 
-
 
 public class openSequence extends Application{
 	Stage window;

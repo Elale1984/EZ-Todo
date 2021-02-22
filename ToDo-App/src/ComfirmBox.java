@@ -14,6 +14,7 @@ public class ComfirmBox {
 		window.setTitle(title);
 		window.setMinWidth(300);
 		
+		//create gen label for message
 		Label label = new Label();
 		label.setText(message);
 		
