@@ -46,6 +46,9 @@ public class openSequence extends Application{
 		// sets close button
 		btnCancel.setOnAction(e -> closeProgram());
 		
+		// sets login button
+		btnLog.setOnAction(e -> mainMenue());
+		
 		// Create scene and place it on a stage
 		Scene wWindow = new Scene(wPane, 200,300);
 		window.setTitle("Welcome To EZ-TODO");
@@ -63,8 +66,10 @@ public class openSequence extends Application{
 			System.out.print("GoodBye!!");
 			window.close();
 		}
-		
-		
+	}	
+	private void mainMenue() {
+		window.close();
+		ToDoMenue.menueWindow("Main Menue", "Choose from the following tasks");
 		
 		
 	}
