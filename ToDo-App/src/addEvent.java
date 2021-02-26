@@ -19,10 +19,15 @@ static boolean answer;
 		
 		//Generate two text boxes
 		TextField event = new TextField();
+		event.setText("Enter event here");
 		TextField time = new TextField();
 		
 		// new datepicker
 		DatePicker date = new DatePicker();
+		
+		//radial buton am pm
+		RadioButton radAm = new RadioButton();
+		RadioButton radPm = new RadioButton();
 		
 		// create two button
 		Button btnAdd = new Button("ADD");
@@ -41,17 +46,40 @@ static boolean answer;
 		});
 		
 		FlowPane layout = new FlowPane();
-		layout.setPadding(new Insets(15,10,10,10));
-		layout.setHgap(10);
-		layout.setVgap(10);
+		FlowPane layout2 = new FlowPane();
+		FlowPane layout3 = new FlowPane();
+		FlowPane layout4 = new FlowPane();
+		VBox fullLoad = new VBox();
+		
+		
+		layout.setPadding(new Insets(10,5,5,10));
+		layout.setHgap(5);
+		layout.setVgap(5);
+		layout2.setPadding(new Insets(10,5,5,10));
+		layout2.setHgap(5);
+		layout2.setVgap(5);
+		layout3.setPadding(new Insets(10,5,10,10));
+		layout3.setHgap(5);
+		layout3.setVgap(5);
+		layout4.setPadding(new Insets(10,5,5,10));
+		layout4.setHgap(5);
+		layout4.setVgap(5);
+		
 		layout.getChildren().addAll(new Label ("Enter Task Name: "), event);		
-		layout.getChildren().addAll(new Label ("Enter Time: "), time);
-		layout.getChildren().addAll(new Label ("Enter Date: "), date);
-		layout.getChildren().addAll(btnAdd, btnCancel);
+		layout2.getChildren().addAll(new Label ("Enter Time: "), time);
+		layout3.getChildren().addAll(radAm, new Label ("AM"), radPm, new Label("PM"));
+		layout4.getChildren().addAll(new Label ("Enter Date: "), date);
+		layout4.getChildren().addAll(btnAdd, btnCancel);
 		
 
 		layout.setAlignment(Pos.BASELINE_RIGHT);
-		Scene scene = new Scene(layout, 200, 300);
+		layout2.setAlignment(Pos.BASELINE_RIGHT);
+		layout3.setAlignment(Pos.BASELINE_RIGHT);
+		layout4.setAlignment(Pos.BASELINE_RIGHT);
+
+		fullLoad.getChildren().addAll(layout, layout2, layout3, layout4);
+		
+		Scene scene = new Scene(fullLoad, 200, 300);
 		window.setScene(scene);
 		window.showAndWait();
 		

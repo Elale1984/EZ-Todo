@@ -36,17 +36,22 @@ public class ToDoMenue  {
 		label.setText(message);
 			
 		
-		
+		//btnNewTask click event calls the addEvent class method of display
 		btnNewTask.setOnAction(e -> {
 			answer = true;
 			addEvent.display("The Test", "Open seseme");
 		});
-			
+		
+		//btnViewTask click event
 		btnViewTasks.setOnAction(e -> {
 			answer = false;
 			window.close();
 				
 		});
+		
+		//btnClose click event exits out of the program completely 
+		//also gives a comfirm box to make sure that is what you want to do
+		
 		btnClose.setOnAction(e -> {
 			answer = false;
 			window.close();
@@ -54,20 +59,13 @@ public class ToDoMenue  {
 		});		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
+		// layout 
 		layout.setTop(headerLayout());
 		layout.setLeft(sidePanelList());
 		
 		
 		
-		
+		//Set the scene
 		
 		Scene scene = new Scene(layout);
 		window.setScene(scene);
@@ -81,12 +79,18 @@ public class ToDoMenue  {
 	}
 	// The header of the window
 	private static Node headerLayout() {
+		//set up the HBox for the header
 		HBox header = new HBox();
+		
+		// set background color of the HBox
 		header.setStyle("-fx-background-color: black");
+		
+		//set the text with all the properties 
 		Text headerText = new Text(20, 20,"  ToDo-Ez");
 		headerText.setFont(Font.font("Courier", FontWeight.BOLD, 40));
 		headerText.setFill(Color.WHITE);
 		
+		// set the children 
 		header.getChildren().add(headerText);
 		return header;
 	}
@@ -94,9 +98,9 @@ public class ToDoMenue  {
 	// Side Panel with all of the button options for the To Do List
 	private static Node sidePanelList() {
 		// create VBox and set properties
-		VBox sidePanel = new VBox(15);
-		sidePanel.setPadding(new Insets(15,5,5,5));	
-		sidePanel.setStyle("-fx-background-color: grey");
+		VBox sidePanel = new VBox(15); // VBox setup
+		sidePanel.setPadding(new Insets(15,5,5,5));	// align the edges
+		sidePanel.setStyle("-fx-background-color: grey"); // color grey
 
 		// Add the labels and buttons to the side panel
 		sidePanel.getChildren().addAll(btnNewTask, btnViewTasks, btnClose);
