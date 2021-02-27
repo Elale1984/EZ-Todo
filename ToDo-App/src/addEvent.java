@@ -6,7 +6,12 @@ import javafx.geometry.*;
 
 public class addEvent {
 static boolean answer;
-	
+static String txtNameContents;
+static String txtTimeContents;
+static String txtDateContents;
+static String radMeridianSelect;
+
+
 	public static Boolean display(String title, String message) {
 		Stage window = new Stage();
 		window.initModality(Modality.APPLICATION_MODAL);
@@ -18,8 +23,8 @@ static boolean answer;
 		label.setText(message);
 		
 		//Generate two text boxes
-		TextField event = new TextField();
-		event.setText("Enter event here");
+		TextField txtName = new TextField();
+		txtName.setText("Enter event here");
 		TextField time = new TextField();
 		
 		// new datepicker
@@ -29,13 +34,31 @@ static boolean answer;
 		RadioButton radAm = new RadioButton();
 		RadioButton radPm = new RadioButton();
 		
+		// set the radio buttons to a toggle group
+		ToggleGroup meridianToggle = new ToggleGroup();
+		radAm.setToggleGroup(meridianToggle);
+		radPm.setToggleGroup(meridianToggle);
+		
 		// create two button
 		Button btnAdd = new Button("ADD");
 		Button btnCancel = new Button("Cancel");
 		
+		txtNameContents = txtName.getText();
+		RadioButton selectedRadioButton =(RadioButton) meridianToggle.getSelectedToggle();
+		
 		btnAdd.setOnAction(e -> {
 			answer = true;
-			window.close();
+			if (selectedRadioButton == radAm) {
+				radMeridianSelect = "AM";
+				btnAddEvent();
+			}
+			else if(selectedRadioButton == radPm) {
+				radMeridianSelect = "PM";
+				btnAddEvent();
+			}
+			else {
+				AlertBox.display("Warning Error", "You forgot to choose AM or PM");
+			}
 			
 		});
 		
@@ -65,7 +88,7 @@ static boolean answer;
 		layout4.setHgap(5);
 		layout4.setVgap(5);
 		
-		layout.getChildren().addAll(new Label ("Enter Task Name: "), event);		
+		layout.getChildren().addAll(new Label ("Enter Task Name: "), txtName);		
 		layout2.getChildren().addAll(new Label ("Enter Time: "), time);
 		layout3.getChildren().addAll(radAm, new Label ("AM"), radPm, new Label("PM"));
 		layout4.getChildren().addAll(new Label ("Enter Date: "), date);
@@ -87,6 +110,10 @@ static boolean answer;
 	
 		return answer;
 	
+	}
+
+	private static void btnAddEvent() {
+		System.out.println("test complete");
 	}
 
 }
